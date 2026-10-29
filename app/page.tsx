@@ -25,7 +25,7 @@ interface AuditLog {
   timestamp: string;
 }
 
-export default function FullstackAttendance() {
+export default function CollegeAttendanceTracker() {
   const [subjects, setSubjects] = useState<Subject[]>([]);
   const [auditLogs, setAuditLogs] = useState<AuditLog[]>([]);
   const [mounted, setMounted] = useState(false);
@@ -62,7 +62,7 @@ export default function FullstackAttendance() {
 
   if (!mounted) return null;
 
-  // 1. Instant Entry Handler (Zero-lag, 100% Guaranteed Submission)
+  // 1. Instant Entry Handler
   const handleAddSubject = (e: React.FormEvent) => {
     e.preventDefault();
     if (!name.trim()) return;
@@ -167,7 +167,7 @@ export default function FullstackAttendance() {
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `Attendance_Audit_Report.csv`;
+    a.download = `College_Attendance_Report.csv`;
     a.click();
   };
 
@@ -183,7 +183,8 @@ export default function FullstackAttendance() {
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h1 className="text-2xl md:text-3xl font-extrabold text-white tracking-tight">SmartTrack Enterprise</h1>
+                {/* Updated Title */}
+                <h1 className="text-2xl md:text-3xl font-extrabold text-white tracking-tight">College Attendance Tracker</h1>
                 <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 flex items-center gap-1">
                   <Database className="w-3 h-3" /> Live Engine Active
                 </span>
